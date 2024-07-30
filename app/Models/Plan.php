@@ -15,4 +15,10 @@ class Plan extends Model
 		'short_description',
 		'price',
 	];
+
+	//relationship with signatures 1-*
+	public function signatures()
+	{
+		return $this->hasMany(Signature::class);
+	}
 }

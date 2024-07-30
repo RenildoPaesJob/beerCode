@@ -21,4 +21,16 @@ class Client extends Model
 	protected $casts = [
 		'birthdate' => 'datetime'
 	];
+
+	//relationship with user 1-1
+	public function user()
+	{
+		return $this->belongsTo(User::class);
+	}
+
+	//relationship with signatures 1-*
+	public function signatures()
+	{
+		return $this->hasMany(Signature::class);
+	}
 }
