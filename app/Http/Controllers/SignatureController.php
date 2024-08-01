@@ -4,15 +4,28 @@ namespace App\Http\Controllers;
 
 use App\Models\Signature;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class SignatureController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+		$validator = Validator::make($request->all(), [
+			'drink' => 'required|alpha',
+		]);
+
+		$params = $validator->fails() ? $validator->messages() : $validator->validated()['drink'];
+
+		$user = auth()->user();
+
+		$nameUser = $user->name;
+		$document = $user->client->document;
+		$status   = $user->client->signatures->first()->status->name;
+
+        return view('test', compact('nameUser', 'document', 'status', 'params'));
     }
 
     /**
