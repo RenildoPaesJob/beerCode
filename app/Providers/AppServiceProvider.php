@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +20,15 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+		$this->configureVerbs();
     }
+
+	public function configureVerbs (): void
+	{
+		Route::resourceVerbs([
+			//key => before and value => after
+			'create' => 'inserir',
+			'edit' => 'editar'
+		]);
+	}
 }

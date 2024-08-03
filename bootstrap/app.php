@@ -11,7 +11,9 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
+		$middleware->alias([
+			'tokenMiddleware' => \App\Http\Middleware\TokenMiddleware::class
+		]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
