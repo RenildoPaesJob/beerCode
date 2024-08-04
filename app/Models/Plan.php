@@ -14,10 +14,11 @@ class Plan extends Model
 		'name',
 		'short_description',
 		'price',
+		'cod'
 	];
 
 	//relationship with signatures 1-*
-	public function signatures()
+	public function signatures(): \Illuminate\Database\Eloquent\Relations\HasMany
 	{
 		return $this->hasMany(Signature::class);
 	}

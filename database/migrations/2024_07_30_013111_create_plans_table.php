@@ -16,6 +16,7 @@ return new class extends Migration
 			$table->string('name');
 			$table->string('short_description');
 			$table->integer('price');
+			$table->string('cod');
             $table->timestamps();
 			$table->softDeletes();//delete logically -> deleted_at
         });

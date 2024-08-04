@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Plan;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Collection;
 
 class PlanController extends Controller
 {
@@ -11,8 +12,9 @@ class PlanController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        //
+	{
+		//Plan::all();
+        return view('plan.plan');
     }
 
     /**
@@ -27,16 +29,16 @@ class PlanController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+	{
+		return Plan::create($request->all());
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Plan $plan)
-    {
-        //
+    public function show(Plan $plan): Plan
+	{
+        return $plan;
     }
 
     /**
