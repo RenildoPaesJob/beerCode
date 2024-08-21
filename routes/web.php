@@ -22,11 +22,11 @@ Route::middleware('auth')->group(function () {
 
 // PlanController
 Route::resource('/plano', PlanController::class)
-	->withoutMiddleware([//withoutMiddleware => ignora a middlewares abaixo
+	->withoutMiddleware([//withoutMiddleware => ignora as middlewares abaixo
 		\Illuminate\Http\Middleware\TrustProxies::class,
 		\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class
 	])
-	->parameters([
+	->parameters([// modificando o nome do parametro passo pela a URI, exemplo: plano/{id}, fica plano/{cod}
 		'plano' => 'plan:cod'
 	])
 	->missing(fn () => redirect()->route('plano.index'));

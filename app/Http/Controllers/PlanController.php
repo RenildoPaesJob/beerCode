@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Plan;
 use Illuminate\Http\Request;
-use Illuminate\Database\Eloquent\Collection;
 
 class PlanController extends Controller
 {
@@ -14,7 +13,7 @@ class PlanController extends Controller
     public function index()
 	{
 		$plans = Plan::all();
-        return view('plan.plan', compact('plans'));
+        return view('plan.list', compact('plans'));
     }
 
     /**
@@ -22,7 +21,7 @@ class PlanController extends Controller
      */
     public function create()
     {
-        //
+        return view('plan.create');
     }
 
     /**
